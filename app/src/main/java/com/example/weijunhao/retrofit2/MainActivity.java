@@ -3,6 +3,8 @@ package com.example.weijunhao.retrofit2;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 Endpoints endpoints = response.body();
                 Log.i("wjh", endpoints.toString());
                 Log.i("wjh-url", response.toString());
+
             }
 
             @Override
@@ -37,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         userCall.enqueue(new Callback<user>() {
             @Override
             public void onResponse(Call<user> call, Response<user> response) {
-                Log.i("wjh",response.body().toString());
-                Log.i("wjh-url",response.toString());
+                Log.i("wjh", response.body().toString());
+                Log.i("wjh-url", response.toString());
                 Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
             }
 
@@ -49,5 +52,33 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     *
+     * @param menu
+     * @return true:允许创建的菜单显示；fase:创建的菜单无法显示
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.add_item:
+                Toast.makeText(this, "you clicked Add", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.remove_item:
+                Toast.makeText(this, "you clicked Remove", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+        }
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

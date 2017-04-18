@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        service.getUserFollowingObservable("junhaowei")
+        /*service.getUserFollowingObservable("junhaowei")
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())*/
                // .subscribe(new Subscriber<List<User>>() {})
 
     }
